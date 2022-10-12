@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <h3 class='text-center text-muted mb-3'> Students </h3>
+  <p class='text-right'><a href='{{url_for("add")}}' class='btn btn-success '>+Add Student</a></p>
+  <table class='table table-bordered'>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+
+      <th>Email</th>
+      <th>Birthday</th>
+      <th>Address</th>
+      <th>Score</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {% for row in datas %}
+        <tr>
+          <td> {{row.id}} </td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.birthday}}</td>
+          <td>{{row.address}}</td>
+          <td>{{row.score}}</td>
+          <td><a href='{{url_for("edit",id=row.id)}}' class='btn btn-primary'>Edit</a></td>
+          <td><a href='{{url_for("delete",id=row.id)}}' class='btn btn-danger' onclick='return confirm("Are You Sure")'>Delete</a></td>
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{% endblock %}
