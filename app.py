@@ -59,8 +59,3 @@ def delete(id):
     cur.execute("delete from students where id=?", (id,))
     con.commit()
     return redirect(url_for("index"))
-
-
-if __name__ == '__main__':
-    app.secret_key = 'admin123'
-    app.run(debug=True)
